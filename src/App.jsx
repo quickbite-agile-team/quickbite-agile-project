@@ -10,15 +10,15 @@ const currencyFormatter = new Intl.NumberFormat("en-CA", {
 function App() {
   return (
     <main className="min-h-screen bg-gray-100 p-6">
-      <section className="mx-auto max-w-3x1 rounded-lg bg-white p-6 shadow">
-        <h1 className="text-3x1 font-bold">{restaurant.name}</h1>
+      <section className="mx-auto max-w-3xl rounded-lg bg-white p-6 shadow">
+        <h1 className="text-3xl font-bold">{restaurant.name}</h1>
 
         <p className="mt-2 text-gray-600">
           {restaurant.description}
         </p>
 
         <div className="mt-6">
-          <h2 className="text-2x1 font semibold">Menu</h2>
+          <h2 className="text-2xl font-semibold">Menu</h2>
 
           <div className="mt-4 space-y-4">
             {restaurant.menuItems.map((item) =>(
