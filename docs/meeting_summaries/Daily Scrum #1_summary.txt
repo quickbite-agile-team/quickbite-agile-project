@@ -1,0 +1,78 @@
+Daily Scrum #1
+October 10, 2026
+Attendees: jarredgoldberg123@gmail.com, limkyouyou@gmail.com, mohammadnabulsi019@gmail.com, Wookwon Shim
+
+Overview
+
+The team conducted their first daily scrum to review progress on the menu and cart functionality and to plan for upcoming development tasks.
+
+Progress Updates
+Mohammed reported that he created a personal branch, set up the environment, and implemented the plus and minus functionality for adding items to the cart based on Koyu's code. He also proposed adding a side panel cart to store menu items, which was discussed as a change to the original requirements.
+
+Kyo confirmed that the menu page is complete, including data for various menus, descriptions, and prices. He noted that his pull request is open and ready for review and merging into the main branch.
+
+Jared has not yet started his specific tasks but plans to review Kyo's work and begin working on functionality once the menu is stable.
+
+Speaker 2 has set up the environment and scaffolded the project structure.
+
+Technical Decisions
+Cart Implementation
+The team decided to implement the cart as a side panel rather than a separate page to maintain the single-page application (SPA) architecture and avoid unnecessary complexity. While Jared raised concerns about how this might affect multi-restaurant ordering in the future, the group agreed that for this assignment, the focus is on basic navigation and ordering functionality.
+
+Workflow and Documentation
+1. Mohammed will finish the side cart UI and then create a new pull request to maintain a realistic development timeline.
+2. Kyo will review Mohammed's current work, and Jared will review it as well.
+3. Mohammed is documenting progress via screenshots in Google Docs to assist Kyo with the final report.
+4. Speaker 2 is using Otter AI for transcription and managing documentation via GitHub.
+
+Open Questions
+* Will the side cart be sufficient for future scalability, or will it need to be converted to a separate page later?
+* When will the demo be rescheduled following the missed meeting with the instructor?
+* How will Jared handle data storage for the submit button functionality, such as using a JSON file?
+
+Action Items
+
+- Review the plus/minus code and pull request today, then confirm whether it is ready to merge.
+- Implement the side cart to store selected menu items, including the cart UI, submit-button UI, and pickup-time UI; then create a pull request.
+- Review and accept the pull request for the completed side-cart implementation once it is submitted.
+- Implement submit functionality, including storing the order data and preventing submission when required data is missing or invalid.
+- Compile the team's screenshots and work evidence into the final report.
+- Share screenshots and other work evidence for inclusion in the final report.
+- Send the calendar invite for the next Scrum meeting on Monday at the agreed meeting time.
+- Follow up with Satorio to reschedule the demo if she does not respond by midday or mid-afternoon, noting that Thursday is unavailable.
+
+Outline
+
+Meeting Logistics and Progress Updates
+
+- Speaker 2 introduced the use of an AI transcription tool to assist with meeting summaries and documentation.
+- Mohammed reported that he created a personal branch, set up his environment, and added plus/minus functionality to the orders.
+- Kyo has completed the menu page, including data for various menus, descriptions, and prices.
+
+Proposed Changes to Project Scope
+
+- Mohammed proposed adding a cart feature to store menu items selected by the user.
+- The team discussed whether the cart should be a separate page or a side panel within the single-page application.
+- The group decided to implement the cart as a side panel to keep the application simple and avoid unnecessary page navigation.
+- This change was officially recorded as a modification to the original project requirements.
+
+Code Review and Pull Request Workflow
+
+- Kyo requested that his pull request be reviewed and merged into the main branch.
+- Jared agreed to review Kyo's pull request since he needs to understand the code for his own tasks.
+- Mohammed will complete the side cart UI first, then create a separate pull request for that functionality to maintain a realistic development timeline.
+- Kyo will compile all evidence, such as screenshots of progress, into a final report.
+
+Task Assignments and Future Goals
+
+- Mohammed's next goal is to build the side cart UI, including the submit button and time picker UI.
+- Jared will work on the backend functionality, specifically handling data storage (such as JSON files) and input validation for the submit button.
+- The team established a goal for each member to define their specific objectives before the next scrum meeting.
+
+Rescheduling the Demo and Next Meeting
+
+- Jared will follow up with Satorio regarding the missed demo and propose new times based on the team's availability.
+- The team noted they are generally available during reading week, though Speaker 2 is unavailable on Thursday.
+- The next Daily Scrum is scheduled for Monday at 11:00 AM.
+
+Generated by https://otter.ai

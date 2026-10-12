@@ -1,5 +1,6 @@
 import { useState } from "react"
 import restaurant from "./data/menuData"
+import SchedulePickupModal from "./SchedulePickupModal";
 
 
 const currencyFormatter = new Intl.NumberFormat("en-CA", {
@@ -9,6 +10,7 @@ const currencyFormatter = new Intl.NumberFormat("en-CA", {
 
 
 function App() {
+  const [open, setOpen] = useState(false);
   const [quantities, setQuantities] = useState(() =>
     Object.fromEntries(restaurant.menuItems.map((item) => [item.id, 0]))
   )
@@ -83,7 +85,23 @@ function App() {
             ))}
           </div>
         </div>
+
+        {/* The button and SchedulePickupModal to be relocated and called inside the checkout modal */}
+        <button
+          type="button"
+          onClick={() => setOpen(true)}
+          className="mt-6 cursor-pointer rounded-lg border-2 border-gray-900 px-4 py-2 font-semibold"
+        >
+        Pick time
+      </button>
       </section>
+
+      <SchedulePickupModal
+        isOpen={open}
+        onClose={() => setOpen(false)}
+        onSchedule={(w) => console.log("schedule:", w)}
+      />
+
     </main>
   )
 }
