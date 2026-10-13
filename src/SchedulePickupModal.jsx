@@ -61,11 +61,6 @@ export default function SchedulePickupModal({
 }) {
   const [selected, setSelected] = useState(windows[0] ?? null);
 
-  // Reset to the first window each time the modal opens
-  useEffect(() => {
-    if (isOpen) setSelected(windows[0] ?? null);
-  }, [isOpen, windows[0]]);
-
   // Close on Escape
   useEffect(() => {
     if (!isOpen) return;
