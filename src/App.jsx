@@ -1,6 +1,7 @@
 import { useState } from "react"
 import restaurant from "./data/menuData"
 import { getSelectedItems, getSubtotal } from "./utils/order"
+import SchedulePickupModal from "./SchedulePickupModal";
 
 
 const currencyFormatter = new Intl.NumberFormat("en-CA", {
@@ -10,11 +11,12 @@ const currencyFormatter = new Intl.NumberFormat("en-CA", {
 
 
 function App() {
+  const [open, setOpen] = useState(false)
+  const [selectedPickupWindow, setSelectedPickupWindow] = useState("")
   const [quantities, setQuantities] = useState(() =>
     Object.fromEntries(restaurant.menuItems.map((item) => [item.id, 0]))
   )
   const [pickupName, setPickupName] = useState("")
-  const [pickupTime, setPickupTime] = useState("")
   const [error, setError] = useState("")
   const [success, setSuccess] = useState("")
 
@@ -61,22 +63,14 @@ function App() {
       return
     }
 
-    const pickupDate = new Date(pickupTime)
-    const year = pickupDate.getFullYear()
-    
-    if (
-      !pickupTime ||
-      Number.isNaN(pickupDate.getTime()) ||
-      pickupDate <= new Date() ||
-      year > 9999
-    ) {
-      setError("Please select a valid future pickup time.")
+    if (!selectedPickupWindow) {
+      setError("Please select a pickup time.")
       return
     }
 
     const order = {
       pickupName: name,
-      pickupTime,
+      pickupTime: selectedPickupWindow,
       items,
       total: Number(
         items.reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2)
@@ -99,7 +93,7 @@ function App() {
 
     setSuccess("Order submitted successfully!")
     setPickupName("")
-    setPickupTime("")
+    setSelectedPickupWindow("")
     setQuantities(
       Object.fromEntries(restaurant.menuItems.map((item) => [item.id, 0]))
     )
@@ -164,7 +158,7 @@ function App() {
               ))}
             </div>
           </div>
-        </div>
+        
 
         <div className="mt-8 border-t border-gray-200 pt-6">
           <h2 className="text-2xl font-semibold">Submit Order</h2>
@@ -184,20 +178,19 @@ function App() {
               />
             </div>
 
-            <div>
-              <label htmlFor="pickupTime" className="block font-medium">
-                Pickup Time
-              </label>
-              <input
-                id="pickupTime"
-                type="datetime-local"
-                min="2026-01-01T00:00"
-                max="9999-12-31T23:59"
-                value={pickupTime}
-                onChange={(e) => setPickupTime(e.target.value)}
-                className="mt-1 w-full rounded-lg border border-gray-300 p-3"
-              />
-            </div>
+            <button
+              type="button"
+              onClick={() => setOpen(true)}
+              className="w-full rounded-lg border-2 border-gray-900 px-4 py-2 font-semibold"
+            >
+              Pick time
+            </button>
+
+            {selectedPickupWindow && (
+              <p className="text-sm text-gray-600">
+                Selected pickup time: {selectedPickupWindow}
+              </p>
+            )}
 
             {error && <p role="alert" className="text-red-600">{error}</p>}
             {success && <p role="status" className="text-green-600">{success}</p>}
@@ -247,6 +240,14 @@ function App() {
           )}
         </aside>
       </div>
+        <SchedulePickupModal
+          isOpen={open}
+          onClose={() => setOpen(false)}
+          onSchedule={(w) => {
+            setSelectedPickupWindow(w)
+            setOpen(false)
+          }}
+        />
     </main>
   )
 }
